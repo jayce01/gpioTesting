@@ -7,7 +7,7 @@
 buttonTest::buttonTest() {}
 
 void buttonTest::run() {
-    if (gpioInitialise() < 0) {
+    if (gpioInitialise() > 0) {
         cerr << "pigpio initialization failed." << endl;
         return;
     }
