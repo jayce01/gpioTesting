@@ -15,6 +15,7 @@ void buttonTest::run() {
     // Set up the button pin as an input with a pull-up resistor
     gpioSetMode(BUTTON_PIN, PI_INPUT);
     gpioSetPullUpDown(BUTTON_PIN, PI_PUD_UP);
+    gpioSetMode(LED_PIN, PI_OUTPUT);
 
     // Main loop to read button state
     std::cout << "Press Ctrl+C to exit." << std::endl;
@@ -24,6 +25,12 @@ void buttonTest::run() {
 
         // Display the button state
         std::cout << "Button State: " << buttonState << std::endl;
+        if(buttonState == 1){
+            gpioPWM(LED_PIN, 0);
+        }
+        else{
+            gpioPWM(LED_PIN, 128);
+        }
 
         // Add a delay to avoid excessive readings
         time_sleep(0.1);
@@ -31,6 +38,5 @@ void buttonTest::run() {
 
     // Clean up pigpio resources
     gpioTerminate();
-
 }
 
