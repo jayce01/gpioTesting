@@ -21,16 +21,9 @@ void buttonTest::run() {
 
     // Run the loop until the user presses Enter
     cout << "Press Enter to exit." << endl;
-    int buttonStatus = 0;
     while (cin.get() != '\n') {
         // Check the button status
-        buttonStatus = gpioRead(BUTTON_PIN);
-        if(buttonStatus == 0){
-            cout << "not pressed" << endl;
-        }
-        else{
-            cout << buttonStatus << endl;
-        }
+        int buttonStatus = gpioRead(BUTTON_PIN);
 
         // Button is pressed (active low)
         if (buttonStatus == PI_LOW) {
