@@ -11,6 +11,9 @@ void buttonTest::run() {
         cerr << "pigpio initialization failed." << endl;
         return;
     }
+    else{
+        cerr << "successful init" << endl;
+    }
 
     // Set up the button pin as an input with a pull-up resistor
     gpioSetMode(BUTTON_PIN, PI_INPUT);
