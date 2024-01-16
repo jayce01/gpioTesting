@@ -1,3 +1,4 @@
+#include <limits>
 #include "buttonTest.h"
 #include "pigpio.h"
 
@@ -10,11 +11,8 @@ void buttonTest::run() {
     if (gpioInitialise() < 0) {
         cerr << "pigpio initialization failed." << endl;
         return;
-    }
-    else{
-        cerr << "successful init" <<
-
-        endl;
+    } else {
+        cerr << "successful init" << endl;
     }
 
     // Set up the button pin as an input with a pull-up resistor
@@ -23,6 +21,9 @@ void buttonTest::run() {
 
     // Set up the LED pin as an output
     gpioSetMode(LED_PIN, PI_OUTPUT);
+
+    // Clear the input stream
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     // Run the loop until the user presses Enter
     cout << "Press Enter to exit." << endl;
@@ -47,3 +48,4 @@ void buttonTest::run() {
     // Clean up
     gpioTerminate();
 }
+
