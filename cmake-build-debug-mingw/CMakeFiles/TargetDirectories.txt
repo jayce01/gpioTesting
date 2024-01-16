@@ -1,0 +1,3 @@
+C:/Users/jayce/CLionProjects/gpioTesting/cmake-build-debug-mingw/CMakeFiles/gpioTesting.dir
+C:/Users/jayce/CLionProjects/gpioTesting/cmake-build-debug-mingw/CMakeFiles/edit_cache.dir
+C:/Users/jayce/CLionProjects/gpioTesting/cmake-build-debug-mingw/CMakeFiles/rebuild_cache.dir
