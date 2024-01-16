@@ -6,5 +6,4 @@
 int main() {
     buttonTest button;
     button.run();
-    gpioTerminate();
 }
