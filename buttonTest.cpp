@@ -7,43 +7,30 @@
 buttonTest::buttonTest() {}
 
 void buttonTest::run() {
+    // Initialize pigpio library
     if (gpioInitialise() < 0) {
-        cerr << "pigpio initialization failed." << endl;
-        return;
-    }
-    else{
-        cerr << "successful init" <<
-
-        endl;
+        std::cerr << "pigpio initialization failed." << std::endl;
     }
 
     // Set up the button pin as an input with a pull-up resistor
     gpioSetMode(BUTTON_PIN, PI_INPUT);
-    gpioSetPullUpDown(BUTTON_PIN, PI_PUD_DOWN);
+    gpioSetPullUpDown(BUTTON_PIN, PI_PUD_UP);
 
-    // Set up the LED pin as an output
-    gpioSetMode(LED_PIN, PI_OUTPUT);
+    // Main loop to read button state
+    std::cout << "Press Ctrl+C to exit." << std::endl;
+    while (true) {
+        // Read the button state (1 for released, 0 for pressed)
+        int buttonState = gpioRead(BUTTON_PIN);
 
-    // Run the loop until the user presses Enter
-    cout << "Press Enter to exit." << endl;
-    while (cin.get() == '\n') {
-        // Check the button status
-        int buttonStatus = gpioRead(BUTTON_PIN);
+        // Display the button state
+        std::cout << "Button State: " << buttonState << std::endl;
 
-        // Button is pressed (active low)
-        if (buttonStatus == PI_HIGH) {
-            cout << "Button pressed! LED will start blinking." << endl;
-
-            // Start blinking the LED
-            gpioPWM(LED_PIN, 128); // 50% duty cycle
-        } else { // Button is released
-            cout << "Button released! LED will stop blinking." << endl;
-
-            // Stop the LED
-            gpioPWM(LED_PIN, 0);
-        }
+        // Add a delay to avoid excessive readings
+        time_sleep(0.1);
     }
 
-    // Clean up
+    // Clean up pigpio resources
     gpioTerminate();
+
 }
+
