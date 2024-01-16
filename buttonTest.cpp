@@ -14,7 +14,7 @@ void buttonTest::run() {
 
     // Set up the button pin as an input with a pull-up resistor
     gpioSetMode(BUTTON_PIN, PI_INPUT);
-    gpioSetPullUpDown(BUTTON_PIN, PI_PUD_UP);
+    gpioSetPullUpDown(BUTTON_PIN, PI_PUD_DOWN);
 
     // Set up the LED pin as an output
     gpioSetMode(LED_PIN, PI_OUTPUT);
