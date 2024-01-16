@@ -24,6 +24,9 @@ void buttonTest::run() {
     while (cin.get() != '\n') {
         // Check the button status
         int buttonStatus = gpioRead(BUTTON_PIN);
+        if(buttonStatus == 0){
+            cout << "not pressed" << endl;
+        }
 
         // Button is pressed (active low)
         if (buttonStatus == PI_LOW) {
