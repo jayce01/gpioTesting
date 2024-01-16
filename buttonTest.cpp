@@ -26,7 +26,7 @@ void buttonTest::run() {
         int buttonStatus = gpioRead(BUTTON_PIN);
 
         // Button is pressed (active low)
-        if (buttonStatus == PI_LOW) {
+        if (buttonStatus == PI_HIGH) {
             cout << "Button pressed! LED will start blinking." << endl;
 
             // Start blinking the LED
