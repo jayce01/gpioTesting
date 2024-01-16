@@ -1,8 +1,8 @@
 #include "buttonTest.h"
 #include "pigpio.h"
 
-#define BUTTON_PIN 17 // GPIO pin connected to the button
-#define LED_PIN 18    // GPIO pin connected to the LED
+#define BUTTON_PIN 23 // GPIO pin connected to the button
+#define LED_PIN 24    // GPIO pin connected to the LED
 
 buttonTest::buttonTest() {}
 
