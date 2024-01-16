@@ -28,6 +28,9 @@ void buttonTest::run() {
         if(buttonStatus == 0){
             cout << "not pressed" << endl;
         }
+        else{
+            cout << buttonStatus << endl;
+        }
 
         // Button is pressed (active low)
         if (buttonStatus == PI_LOW) {
