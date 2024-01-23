@@ -1,6 +1,6 @@
 #include "buttonTest.h"
 #include "pigpio.h"
-//test
+//tes
 #define BUTTON_PIN 23 // GPIO pin connected to the button
 #define LED_PIN 24    // GPIO pin connected to the LED
 
