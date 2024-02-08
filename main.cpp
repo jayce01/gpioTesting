@@ -39,7 +39,7 @@ void closeLCD() {
 
 int main() {
     initializeLCD();
-    time_sleep(100);
+    //time_sleep(100);
 
     lcdPrint("Hello, World!", 0, 0);
     time_sleep(3);
