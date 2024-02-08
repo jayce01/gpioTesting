@@ -44,7 +44,7 @@ int main() {
     lcdPrint("Hello, World!", 0, 0);
     time_sleep(3);
 
-    closeLCD();
+    //closeLCD();
 
     return 0;
 }
