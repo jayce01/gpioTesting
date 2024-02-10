@@ -135,6 +135,11 @@ void lcd_byte(int bits, int mode) {
     // uses the two half byte writes to LCD
     bits_high = mode | (bits & 0xF0) | LCD_BACKLIGHT;
     bits_low = mode | ((bits << 4) & 0xF0) | LCD_BACKLIGHT;
+    if (mode == LCD_CMD) {
+        bits_high |= LCD_BACKLIGHT;
+        bits_low |= LCD_BACKLIGHT;
+    }
+
 
     // High bits
     i2cWriteByteData(fd, bits_high, 0);
