@@ -56,6 +56,7 @@ int main() {
 
     lcdPrint("Hello, World!", 0, 0);
     time_sleep(20.f);
+    std::cout << "hello" << std::endl;
 
     // Turn off the backlight before closing
     i2cWriteByte(lcdHandle, LCD_BACKLIGHT_OFF);
