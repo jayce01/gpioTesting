@@ -11,6 +11,9 @@
 
 #define LINE1  0x80 // 1st line
 #define LINE2  0xC0 // 2nd line
+#define LINE3  0x94 // 3rd line
+#define LINE4  0xD4 // 4th line
+
 
 #define LCD_BACKLIGHT   0x08  // On
 // LCD_BACKLIGHT = 0x00  # Off
@@ -48,7 +51,7 @@ int main() {
         lcdLoc(LINE2);
         typeln("te coma el cuero");
 
-        gpioDelay(2500000);
+        gpioDelay(2500000); //2.5s
         ClrLcd();
         lcdLoc(LINE1);
         typeln("en el pantano");
@@ -57,9 +60,9 @@ int main() {
 
         gpioDelay(2500000);
         ClrLcd();
-        lcdLoc(LINE1);
+        lcdLoc(LINE3);
         typeln("Jila y la");
-        lcdLoc(LINE2);
+        lcdLoc(LINE4);
         typeln("Donkey Kong-C++");
 
         gpioDelay(2500000);
