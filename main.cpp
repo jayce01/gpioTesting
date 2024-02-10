@@ -41,6 +41,15 @@ int main() {
     initializeLCD();
     time_sleep(1);
 
+    // Clear screen command (0x01)
+    i2cWriteByte(lcdHandle, 0x01);
+    time_sleep(1);  // Wait for the LCD to process the command
+
+// Set cursor position to the beginning of the first line
+    i2cWriteByte(lcdHandle, 0x80);
+    time_sleep(1);  // Wait for the LCD to process the command
+
+
     lcdPrint("Hello, World!", 0, 0);
     time_sleep(3);
 
