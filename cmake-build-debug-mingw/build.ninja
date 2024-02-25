@@ -49,17 +49,17 @@ cmake_ninja_workdir = C$:/Users/jayce/CLionProjects/gpioTesting/cmake-build-debu
 
 build cmake_object_order_depends_target_gpioTesting: phony || CMakeFiles/gpioTesting.dir
 
-build CMakeFiles/gpioTesting.dir/main.cpp.obj: CXX_COMPILER__gpioTesting_unscanned_Debug C$:/Users/jayce/CLionProjects/gpioTesting/main.cpp || cmake_object_order_depends_target_gpioTesting
-  DEP_FILE = CMakeFiles\gpioTesting.dir\main.cpp.obj.d
-  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\gpioTesting.dir
-  OBJECT_FILE_DIR = CMakeFiles\gpioTesting.dir
-
 build CMakeFiles/gpioTesting.dir/buttonTest.cpp.obj: CXX_COMPILER__gpioTesting_unscanned_Debug C$:/Users/jayce/CLionProjects/gpioTesting/buttonTest.cpp || cmake_object_order_depends_target_gpioTesting
   DEP_FILE = CMakeFiles\gpioTesting.dir\buttonTest.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\gpioTesting.dir
   OBJECT_FILE_DIR = CMakeFiles\gpioTesting.dir
+
+build CMakeFiles/gpioTesting.dir/RaspLCDDriver/test.cpp.obj: CXX_COMPILER__gpioTesting_unscanned_Debug C$:/Users/jayce/CLionProjects/gpioTesting/RaspLCDDriver/test.cpp || cmake_object_order_depends_target_gpioTesting
+  DEP_FILE = CMakeFiles\gpioTesting.dir\RaspLCDDriver\test.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\gpioTesting.dir
+  OBJECT_FILE_DIR = CMakeFiles\gpioTesting.dir\RaspLCDDriver
 
 
 # =============================================================================
@@ -69,7 +69,7 @@ build CMakeFiles/gpioTesting.dir/buttonTest.cpp.obj: CXX_COMPILER__gpioTesting_u
 #############################################
 # Link the executable gpioTesting.exe
 
-build gpioTesting.exe: CXX_EXECUTABLE_LINKER__gpioTesting_Debug CMakeFiles/gpioTesting.dir/main.cpp.obj CMakeFiles/gpioTesting.dir/buttonTest.cpp.obj
+build gpioTesting.exe: CXX_EXECUTABLE_LINKER__gpioTesting_Debug CMakeFiles/gpioTesting.dir/buttonTest.cpp.obj CMakeFiles/gpioTesting.dir/RaspLCDDriver/test.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\gpioTesting.dir

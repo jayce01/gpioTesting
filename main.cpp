@@ -14,15 +14,15 @@
 #define LINE3  0x94 // 3rd line
 #define LINE4  0xD4 // 4th line
 
-
-#define LCD_BACKLIGHT   0x08  // On
-// LCD_BACKLIGHT = 0x00  # Off
+#define LCD_BACKLIGHT_ON   0x08  // On
+#define LCD_BACKLIGHT_OFF  0x00  // Off
 
 #define ENABLE  0b00000100 // Enable bit
 
 void lcd_init(void);
 void lcd_byte(int bits, int mode);
 void lcd_toggle_enable(int bits);
+void lcd_backlight(int state);
 
 // added by Lewis
 void typeInt(int i);
@@ -46,12 +46,14 @@ int main() {
     char array1[] = "Hello world!";
 
     while (1) {
+        lcd_backlight(LCD_BACKLIGHT_ON);
+
         lcdLoc(LINE1);
         typeln("Pinche Leo ojala");
         lcdLoc(LINE2);
         typeln("te coma el cuero");
 
-        gpioDelay(2500000); //2.5s
+        gpioDelay(2500000); // 2.5s
         ClrLcd();
         lcdLoc(LINE1);
         typeln("en el pantano");
@@ -82,6 +84,8 @@ int main() {
         float FloatVal = 10045.25989;
         typeFloat(FloatVal);
         gpioDelay(2500000);
+
+        lcd_backlight(LCD_BACKLIGHT_OFF);
     }
 
     i2cClose(fd);
@@ -127,19 +131,18 @@ void typeln(const char *s) {
 }
 
 void lcd_byte(int bits, int mode) {
-    //Send byte to data pins
+    // Send byte to data pins
     // bits = the data
     // mode = 1 for data, 0 for command
     int bits_high;
     int bits_low;
-    // uses the two half byte writes to LCD
+    // uses the two half-byte writes to LCD
     bits_high = mode | (bits & 0xF0) | LCD_BACKLIGHT;
     bits_low = mode | ((bits << 4) & 0xF0) | LCD_BACKLIGHT;
     if (mode == LCD_CMD) {
-        bits_high |= LCD_BACKLIGHT;
-        bits_low |= LCD_BACKLIGHT;
+        bits_high &= ~LCD_BACKLIGHT;
+        bits_low &= ~LCD_BACKLIGHT;
     }
-
 
     // High bits
     i2cWriteByteData(fd, bits_high, 0);
@@ -157,6 +160,11 @@ void lcd_toggle_enable(int bits) {
     gpioDelay(500);
     i2cWriteByteData(fd, (bits & ~ENABLE), 0);
     gpioDelay(500);
+}
+
+void lcd_backlight(int state) {
+    // Control the backlight of the LCD
+    i2cWriteByteData(fd, state, 0);
 }
 
 void lcd_init() {
