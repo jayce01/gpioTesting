@@ -39,7 +39,7 @@ int main() {
     i2cWriteByte(handle, 'l');
     i2cWriteByte(handle, 'o');
 
-    time_sleep(2);  // Display for 2 seconds
+    time_sleep(20);  // Display for 2 seconds
 
     i2cWriteByte(handle, 0x01);  // Clear display
     time_sleep(0.1);
