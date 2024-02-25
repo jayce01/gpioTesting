@@ -1,9 +1,13 @@
-#include "pigpio.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include <iostream>
+#include "pigpio.h"
+
 #define I2C_ADDR 0x27  // Replace with your LCD's I2C address
-using namespace std;
+
+void lcd_backlight_on(int handle) {
+    // Assuming the backlight control is handled by a specific command.
+    // You may need to consult your LCD's datasheet for the correct command.
+    i2cWriteByte(handle, 0x08 | 0x04 | 0x10);  // Display on, no cursor, backlight on
+}
 
 int main() {
     if (gpioInitialise() < 0) {
@@ -18,6 +22,8 @@ int main() {
         gpioTerminate();
         return 1;
     }
+
+    lcd_backlight_on(handle);  // Turn on the backlight
 
     i2cWriteByte(handle, 0x01);  // Clear display
     time_sleep(0.1);  // Wait for the display to clear
