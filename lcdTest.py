@@ -87,6 +87,7 @@ class LCD:
         self._send_command(0)
 
 if __name__ == "__main__":
+
     lcd = LCD(I2C_ADDR, I2C_BUS)
     try:
         lcd.write_string("Hello, World!")
