@@ -9,7 +9,7 @@ def safe_exit(signum, frame):
 signal(SIGTERM, safe_exit)
 signal(SIGHUP, safe_exit)
 try:
-    lcd.text("hello")
+    lcd.text("hello", 1)
     pause()
 
 except keyboardInterrupt:
