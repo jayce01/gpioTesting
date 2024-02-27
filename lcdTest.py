@@ -12,7 +12,7 @@ try:
     lcd.text("hello", 1)
     pause()
 
-except keyboardInterrupt:
+except KeyboardInterrupt:
     pass
 
 finally:
